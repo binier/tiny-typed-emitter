@@ -1,12 +1,14 @@
 {
   "name": "tiny-typed-emitter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Fully type-checked EventEmitter",
   "main": "dist/index",
   "repository": "https://github.com/binier/tiny-typed-emitter.git",
   "author": "Zurab Benashvili <zura.benashvili@gmail.com>",
   "license": "MIT",
-  "files": ["dist/*"],
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "build": "tsc",
     "release": "npm run build && npm publish"
