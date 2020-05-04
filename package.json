@@ -9,7 +9,7 @@
   "files": ["dist/*"],
   "scripts": {
     "build": "tsc",
-    "release": "npm run tsc && npm publish"
+    "release": "npm run build && npm publish"
   },
   "devDependencies": {
     "@types/node": "^13.13.4",
