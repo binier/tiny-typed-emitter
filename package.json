@@ -1,9 +1,9 @@
 {
-  "name": "typed-event-emitter",
+  "name": "tiny-typed-emitter",
   "version": "1.0.0",
   "description": "Fully type-checked EventEmitter",
   "main": "dist/index",
-  "repository": "https://github.com/binier/typed-event-emitter.git",
+  "repository": "https://github.com/binier/tiny-typed-emitter.git",
   "author": "Zurab Benashvili <zura.benashvili@gmail.com>",
   "license": "MIT",
   "files": ["dist/*"],
