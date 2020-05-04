@@ -42,11 +42,13 @@ interface EventEmitterOverrides<L extends ListenerSignature<L>>  {
   rawListeners<U extends keyof L>(type: U): L[U][];
 }
 
-interface TypedEmitter<
+export interface TypedEmitter<
   L extends ListenerSignature<L>
-> extends EventEmitterOverrides<L>, Omit<EventEmitter, keyof EventEmitterOverrides<L>> { }
+> extends
+  EventEmitterOverrides<L>,
+  Omit<EventEmitter, keyof EventEmitterOverrides<L>>
+  { new(): TypedEmitter<L>; }
 
 export function TypedEmitter<L extends ListenerSignature<L>>() {
-  return EventEmitter as unknown as TypedEmitter<L>
-    & { new(): TypedEmitter<L>; };
+  return EventEmitter as unknown as TypedEmitter<L>;
 }
