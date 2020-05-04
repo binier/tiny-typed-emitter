@@ -1,0 +1,18 @@
+{
+  "name": "typed-event-emitter",
+  "version": "1.0.0",
+  "description": "Fully type-checked EventEmitter",
+  "main": "dist/index",
+  "repository": "https://github.com/binier/typed-event-emitter.git",
+  "author": "Zurab Benashvili <zura.benashvili@gmail.com>",
+  "license": "MIT",
+  "files": ["dist/*"],
+  "scripts": {
+    "build": "tsc",
+    "release": "npm run tsc && npm publish"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "typescript": "^3.1.6"
+  }
+}
