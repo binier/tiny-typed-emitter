@@ -44,7 +44,23 @@ Have your events and their listeners type-checked with [minimal overhead](#minim
     ```
     const emitter = new (TypedEmitter<MyClassEvent>())();
     ```
- 
+
+## Generic events interface
+To use with generic events interface:
+
+```
+interface MyClassEvents<T> {
+  'added': (el: T, wasNew: boolean) => void;
+}
+
+class MyClass<T>
+  extends TypedEmitter<MyClassEvents<any>>()
+  implements TypedEmitter<MyClassEvents<T>>
+{
+
+}
+```
+
 ## Minimal Overhead
 Library adds basically no overhead by exposing a function which essentially returns `EventEmitter` type casted class. This is essentially what typescript generates and what will be included in your application:
 ```
