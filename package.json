@@ -1,6 +1,6 @@
 {
   "name": "tiny-typed-emitter",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Fully type-checked EventEmitter",
   "main": "lib/index",
   "repository": "https://github.com/binier/tiny-typed-emitter.git",
