@@ -1,6 +1,6 @@
 # tiny-typed-emitter
 
-Have your events and their listeners type-checked with [minimal overhead](#minimal-overhead).
+Have your events and their listeners type-checked with [no overhead](#no-overhead).
 
 ## Install
   Simply add the dependency using **npm**:
@@ -28,21 +28,15 @@ Have your events and their listeners type-checked with [minimal overhead](#minim
 3. on this step depending on your use case, you can:
   - define your custom class extending `EventEmitter`:
     ```
-    class MyClass extends TypedEmitter<MyClassEvents>() {
+    class MyClass extends TypedEmitter<MyClassEvents> {
       constructor() {
         super();
       }
     }
     ```
-  - define typed class:
+  - create new event emitter instance:
     ```
-    const TEvenetEmitter = TypedEmitter<MyClassEvents>();
-    // and then use it to create event emitters:
-    const emitter = new TEventEmitter();
-    ```
-  - directly create new event emitter instance (though this syntax isn't exactly pretty...):
-    ```
-    const emitter = new (TypedEmitter<MyClassEvent>())();
+    const emitter = new TypedEmitter<MyClassEvent>();
     ```
 
 ## Generic events interface
@@ -53,20 +47,13 @@ interface MyClassEvents<T> {
   'added': (el: T, wasNew: boolean) => void;
 }
 
-class MyClass<T>
-  extends TypedEmitter<MyClassEvents<any>>()
-  implements TypedEmitter<MyClassEvents<T>>
-{
+class MyClass<T> extends TypedEmitter<MyClassEvents<T>> {
 
 }
 ```
 
-## Minimal Overhead
-Library adds basically no overhead by exposing a function which essentially returns `EventEmitter` type casted class. This is essentially what typescript generates and what will be included in your application:
-```
-var events_1 = require("events");
-function TypedEmitter() {
-    return events_1.EventEmitter;
-}
-exports.TypedEmitter = TypedEmitter;
-```
+## No Overhead
+Library adds no overhead. All it does is it simply reexports renamed `EventEmitter`
+with customized typings.
+You can check **lib/index.js** to see the exported code.
+
