@@ -2,6 +2,8 @@
 
 Have your events and their listeners type-checked with [no overhead](#no-overhead).
 
+[![npm version](https://badge.fury.io/js/tiny-typed-emitter.svg)](https://badge.fury.io/js/tiny-typed-emitter)
+
 ## Install
   Simply add the dependency using **npm**:
 
