@@ -54,11 +54,6 @@ class MyClass<T> extends TypedEmitter<MyClassEvents<T>> {
 }
 ```
 
-## No Overhead
-Library adds no overhead. All it does is it simply reexports renamed `EventEmitter`
-with customized typings.
-You can check **lib/index.js** to see the exported code.
-
 ## Compatible subclasses with different events
 
 The type of `eventNames()` is a superset of the actual event names to make
@@ -91,3 +86,8 @@ Type 'Frog<{ spawn: any; }>' is not assignable to type 'Animal<ListenerSignature
       Type '"spawn" | "jump"' is not assignable to type '"spawn"'.
         Type '"jump"' is not assignable to type '"spawn"'.
 ```
+
+## No Overhead
+Library adds no overhead. All it does is it simply reexports renamed `EventEmitter`
+with customized typings.
+You can check **lib/index.js** to see the exported code.
