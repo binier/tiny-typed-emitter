@@ -59,3 +59,35 @@ Library adds no overhead. All it does is it simply reexports renamed `EventEmitt
 with customized typings.
 You can check **lib/index.js** to see the exported code.
 
+## Compatible subclasses with different events
+
+The type of `eventNames()` is a superset of the actual event names to make
+subclasses of a `TypedEmitter` that introduce different events type
+compatible. For example the following is possible:
+
+```
+class Animal<E extends ListenerSignature<E>=ListenerSignature<unknown>> extends TypedEmitter<{spawn: () => void} & E> {
+  constructor() {
+    super();
+  }
+}
+
+class Frog<E extends ListenerSignature<E>> extends Animal<{jump: () => void} & E> {
+}
+
+class Bird<E extends ListenerSignature<E>> extends Animal<{fly: () => void} & E> {
+}
+
+const animals: Animal[] = [new Frog(), new Bird()];
+```
+
+If the type of `eventNames()` was restricted to the actual event names,
+TypeScript would yield the following error for the last assignment:
+
+```
+Type 'Frog<{ spawn: any; }>' is not assignable to type 'Animal<ListenerSignature<unknown>>'.
+  The types returned by 'eventNames()' are incompatible between these types.
+    Type '("spawn" | "jump")[]' is not assignable to type '"spawn"[]'.
+      Type '"spawn" | "jump"' is not assignable to type '"spawn"'.
+        Type '"jump"' is not assignable to type '"spawn"'.
+```
