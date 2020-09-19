@@ -76,17 +76,6 @@ class Bird<E extends ListenerSignature<E>> extends Animal<{fly: () => void} & E>
 const animals: Animal[] = [new Frog(), new Bird()];
 ```
 
-If the type of `eventNames()` was restricted to the actual event names,
-TypeScript would yield the following error for the last assignment:
-
-```
-Type 'Frog<{ spawn: any; }>' is not assignable to type 'Animal<ListenerSignature<unknown>>'.
-  The types returned by 'eventNames()' are incompatible between these types.
-    Type '("spawn" | "jump")[]' is not assignable to type '"spawn"[]'.
-      Type '"spawn" | "jump"' is not assignable to type '"spawn"'.
-        Type '"jump"' is not assignable to type '"spawn"'.
-```
-
 ## No Overhead
 Library adds no overhead. All it does is it simply reexports renamed `EventEmitter`
 with customized typings.
