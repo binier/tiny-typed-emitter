@@ -12,7 +12,7 @@ export class TypedEmitter<L extends ListenerSignature<L> = DefaultListener> {
     prependListener<U extends keyof L>(event: U, listener: L[U]): this;
     prependOnceListener<U extends keyof L>(event: U, listener: L[U]): this;
     removeListener<U extends keyof L>(event: U, listener: L[U]): this;
-    removeAllListeners(event: keyof L): this;
+    removeAllListeners(event?: keyof L): this;
     once<U extends keyof L>(event: U, listener: L[U]): this;
     on<U extends keyof L>(event: U, listener: L[U]): this;
     off<U extends keyof L>(event: U, listener: L[U]): this;
