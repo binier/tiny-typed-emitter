@@ -6,30 +6,33 @@ Have your events and their listeners type-checked with [no overhead](#no-overhea
 
 ## Install
   Simply add the dependency using **npm**:
-
-    $ npm i tiny-typed-emitter
-
+```console
+$ npm i tiny-typed-emitter
+```
   or using **yarn**:
-
-    $ yarn add tiny-typed-emitter
+```console
+$ yarn add tiny-typed-emitter
+```
 
 ## Usage
 
 1. import **tiny-typed-emitter** library:
 
-    ```import { TypedEmitter } from 'tiny-typed-emitter';```
+  ```ts
+  import { TypedEmitter } from 'tiny-typed-emitter';
+  ```
 
 2. define events and their listener signatures (**note:** quotes around event names are not mandatory):
-    ```
-    interface MyClassEvents {
-      'added': (el: string, wasNew: boolean) => void;
-      'deleted': (deletedCount: number) => void;
-    }
-    ```
+  ```ts
+  interface MyClassEvents {
+    'added': (el: string, wasNew: boolean) => void;
+    'deleted': (deletedCount: number) => void;
+  }
+  ```
 
 3. on this step depending on your use case, you can:
   - define your custom class extending `EventEmitter`:
-    ```
+    ```ts
     class MyClass extends TypedEmitter<MyClassEvents> {
       constructor() {
         super();
@@ -37,14 +40,14 @@ Have your events and their listeners type-checked with [no overhead](#no-overhea
     }
     ```
   - create new event emitter instance:
-    ```
+    ```ts
     const emitter = new TypedEmitter<MyClassEvent>();
     ```
 
 ## Generic events interface
 To use with generic events interface:
 
-```
+```ts
 interface MyClassEvents<T> {
   'added': (el: T, wasNew: boolean) => void;
 }
@@ -60,7 +63,7 @@ The type of `eventNames()` is a superset of the actual event names to make
 subclasses of a `TypedEmitter` that introduce different events type
 compatible. For example the following is possible:
 
-```
+```ts
 class Animal<E extends ListenerSignature<E>=ListenerSignature<unknown>> extends TypedEmitter<{spawn: () => void} & E> {
   constructor() {
     super();
