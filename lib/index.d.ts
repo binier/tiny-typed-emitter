@@ -1,8 +1,8 @@
-declare type ListenerSignature<L> = {
+export type ListenerSignature<L> = {
     [E in keyof L]: (...args: any[]) => any;
 };
 
-declare type DefaultListener = {
+export type DefaultListener = {
     [k: string]: (...args: any[]) => any;
 };
 
