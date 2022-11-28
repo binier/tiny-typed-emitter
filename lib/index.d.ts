@@ -8,6 +8,7 @@ export type DefaultListener = {
 
 export class TypedEmitter<L extends ListenerSignature<L> = DefaultListener> {
     static defaultMaxListeners: number;
+    constructor(options?: unknown);
     addListener<U extends keyof L>(event: U, listener: L[U]): this;
     prependListener<U extends keyof L>(event: U, listener: L[U]): this;
     prependOnceListener<U extends keyof L>(event: U, listener: L[U]): this;
